@@ -155,6 +155,16 @@ M.textContentItems = function (node) {
       if (t.length) c.push(t);
       return;
     }
+    else if (n.nodeType === 1 && String(n.tagName) === 'IMG') {
+      // get alt first
+      var t
+      if (n.alt) t = _strip(n.alt);
+      else if (n.title) t = _strip(n.title);
+
+      if (t.length) c.push(t);
+      return;
+    }
+    
 
     if (!M.visible(n)) {
       return;
@@ -162,7 +172,7 @@ M.textContentItems = function (node) {
 
     (n.childNodes || []).forEach(walk);
   }
-
+ 
   walk(node);
   return c;
 };
