@@ -8,13 +8,13 @@
   "private": true,
   "scripts": {
     "server": "node ./test/server/index.js",
-    "watch": "NODE_ENV=development gulp watch",
+    "watch": "set NODE_ENV=development&gulp watch",
     "ext": "web-ext run -s ./app -u http://localhost:9876/all",
     "start": "npm run dev && concurrently -k -c 'cyan,green,yellow' 'npm:watch' 'npm:server' 'npm:ext'",
     "clean": "rm -rf ./app ./copytables*.zip",
-    "dev": "NODE_ENV=development gulp build",
-    "prod": "NODE_ENV=production gulp build",
-    "deploy": "NODE_ENV=production gulp deploy",
+    "dev": "set NODE_ENV=development&gulp build",
+    "prod": "set NODE_ENV=production&gulp build",
+    "deploy": "set NODE_ENV=production&gulp deploy",
     "test": "jasmine --config=./test/jasmine.json",
     "lint": "web-ext lint -s ./app",
     "format": "prettier --write '!app/**/*' '**/*.{js,scss,html,json}'"
